@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\headers\assetManager.h" />
     <ClInclude Include="src\headers\Shader.h" />
     <ClInclude Include="src\headers\Texture2D.h" />
     <ClInclude Include="src\types.h" />
@@ -38,9 +37,12 @@
     <Image Include="resource\textures\paddle.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\AssetManager\core.cpp" />
-    <ClCompile Include="src\AssetManager\shader.cpp" />
+    <ClCompile Include="src\core\resourceManager.cpp" />
+    <ClCompile Include="src\core\shader.cpp" />
     <ClCompile Include="src\chained.cpp" />
+    <ClCompile Include="src\core\Texture2D.cpp" />
+    <ClCompile Include="src\headers\resourceManager.h" />
+    <ClCompile Include="src\headers\types.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

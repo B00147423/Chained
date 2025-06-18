@@ -18,6 +18,12 @@
     <ClInclude Include="src\types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\headers\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\Texture2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resource\shaders\sprite.frag" />
@@ -44,6 +50,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\chained.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Texture2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\resourceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\headers\resourceManager.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\headers\types.h">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
