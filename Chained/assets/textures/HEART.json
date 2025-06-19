@@ -1,0 +1,26 @@
+{ "frames": {
+   "pixelated-heart-game-icon-vector-17724581.jpg": {
+    "frame": { "x": 0, "y": 0, "w": 1000, "h": 1051 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1000, "h": 1051 },
+    "sourceSize": { "w": 1000, "h": 1051 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.14.2-x64",
+  "image": "HEART.png",
+  "format": "RGBA8888",
+  "size": { "w": 1000, "h": 1051 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Background", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

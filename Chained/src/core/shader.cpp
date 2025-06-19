@@ -1,4 +1,4 @@
-#include "../headers/shader.h"
+#include "../headers/Shader.h"
 #include <iostream>
 #include <filesystem>
 #include <fstream>

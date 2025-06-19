@@ -24,7 +24,7 @@ namespace Chained{
 		Shader* unuse();
 
 
-	private:
+	public:
 		bool setUniform(const std::string& name, GLuint value, bool bUseShader = false);
 		bool setUniform(const std::string& name, GLint value, bool bUseShader = false);
 		bool setUniform(const std::string& name, GLfloat value, bool bUseShader = false);
@@ -34,8 +34,10 @@ namespace Chained{
 		bool setUniform(const std::string& name, glm::vec3 vec, bool bUseShader = false);
 		bool setUniform(const std::string& name, glm::vec4 vec, bool bUseShader = false);
 		bool setUniform(const std::string& name, glm::mat4 mat4, bool bUseShader = false);
+	private:
 		void clearShaders();
 
+	private:
 		GLuint m_program = 0;
 		std::map<GLenum, GLuint> m_shaderMap;
 	};

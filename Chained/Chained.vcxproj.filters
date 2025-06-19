@@ -24,12 +24,71 @@
     <ClInclude Include="src\headers\Texture2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\headers\spriteRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\ImGuizmo\example\ImApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\ImGuizmo\example\imconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\ImGuizmo\example\imgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\ImGuizmo\example\imgui_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\ImGuizmo\example\imstb_rectpack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\ImGuizmo\example\imstb_textedit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\ImGuizmo\example\imstb_truetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\ImGuizmo\example\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\ImGuizmo\vcpkg-example\ImApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\ImGuizmo\GraphEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\ImGuizmo\ImCurveEdit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\ImGuizmo\ImGradient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\ImGuizmo\ImGuizmo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\ImGuizmo\ImSequencer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resource\shaders\sprite.frag" />
     <None Include="resource\shaders\sprite.vert" />
     <None Include="assets\shaders\sprite.frag" />
     <None Include="assets\shaders\sprite.vert" />
+    <None Include="src\vendor\ImGuizmo\vcpkg-example\README.md" />
+    <None Include="src\vcpkg.json" />
+    <None Include="src\vendor\ImGuizmo\portfile.cmake" />
+    <None Include="setup.bat">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="setup.sh" />
+    <None Include="vendor\vcpkg-ports\portfile.cmake" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\textures\awesomeface.png">
@@ -45,6 +104,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resource\textures\paddle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\test.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\Downloads\HEART.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\awesomeface.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -65,6 +133,48 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\headers\types.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\spriteRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vendor\ImGuizmo\example\imgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vendor\ImGuizmo\example\imgui_demo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vendor\ImGuizmo\example\imgui_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vendor\ImGuizmo\example\imgui_tables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vendor\ImGuizmo\example\imgui_widgets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vendor\ImGuizmo\example\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vendor\ImGuizmo\vcpkg-example\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vendor\ImGuizmo\GraphEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vendor\ImGuizmo\ImCurveEdit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vendor\ImGuizmo\ImGradient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vendor\ImGuizmo\ImGuizmo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vendor\ImGuizmo\ImSequencer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\ImGuizmo\ImGuizmo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

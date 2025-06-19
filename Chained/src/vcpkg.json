@@ -1,0 +1,32 @@
+{
+    "name": "chained-project",
+    "version": "1.0.0",
+    "dependencies": [
+        "boost-asio",
+        "boost-beast",
+        "box2d",
+        "cpr",
+        "curl",
+        "fmt",
+        "freetype",
+        "glad",
+        "glfw3",
+        "glm",
+        "imgui",
+        "imguizmo",
+        "libflac",
+        "libogg",
+        "libpng",
+        "libuv",
+        "libvorbis",
+        "miniaudio",
+        "nlohmann-json",
+        "opengl",
+        "sfml",
+        "spdlog",
+        "stb",
+        "usockets",
+        "uwebsockets",
+        "zlib"
+    ]
+}

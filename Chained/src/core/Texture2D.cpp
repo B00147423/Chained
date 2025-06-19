@@ -1,5 +1,5 @@
 #include "../headers/Texture2D.h"
-
+#include "iostream"
 namespace Chained {
 
     Texture2D::Texture2D()
@@ -18,18 +18,43 @@ namespace Chained {
         m_width = width;
         m_height = height;
 
+        std::cout << "[DEBUG] generate() called\n";
+        std::cout << "[DEBUG] Texture ID: " << m_id << "\n";
+        std::cout << "[DEBUG] Width: " << width << ", Height: " << height << "\n";
+        std::cout << "[DEBUG] GPU Format: " << m_GpuTextureFormat << ", Render Format: " << m_textureRenderFormat << "\n";
+        std::cout << "[DEBUG] Data pointer: " << static_cast<void*>(data) << "\n";
+
+        if (!data) {
+            std::cerr << "[ERROR] Data pointer is null!\n";
+            return;
+        }
+
         glBindTexture(GL_TEXTURE_2D, m_id);
+        std::cout << "[DEBUG] glBindTexture done\n";
+
+        std::cout << "[DEBUG] About to call glTexImage2D\n";
         glTexImage2D(GL_TEXTURE_2D, 0, m_GpuTextureFormat, m_width, m_height, 0, m_textureRenderFormat, GL_UNSIGNED_BYTE, data);
-        // Texture wrapping (both directions)
+        std::cout << "[DEBUG] glTexImage2D done\n";
+
+        std::cout << "[DEBUG] About to set texture parameters\n";
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, m_wrapS);
+        std::cout << "[DEBUG] GL_TEXTURE_WRAP_S set\n";
+        
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, m_wrapT);
-
-        // Texture filtering
+        std::cout << "[DEBUG] GL_TEXTURE_WRAP_T set\n";
+        
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, m_filterMin);
+        std::cout << "[DEBUG] GL_TEXTURE_MIN_FILTER set\n";
+        
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, m_filterMax);
+        std::cout << "[DEBUG] GL_TEXTURE_MAG_FILTER set\n";
 
-        glBindTexture(GL_TEXTURE_2D, 0); // Unbind after setup
+        std::cout << "[DEBUG] glTexParameteri done\n";
+
+        glBindTexture(GL_TEXTURE_2D, 0);
+        std::cout << "[DEBUG] Texture generation finished\n";
     }
+
 
     void Texture2D::bind() const
     {

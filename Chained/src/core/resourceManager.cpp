@@ -1,5 +1,6 @@
+﻿#define STB_IMAGE_IMPLEMENTATION
+#include "../headers/stb_image.h"
 #include "../headers/resourceManager.h"
-#include "stb_image.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -37,10 +38,12 @@ namespace Chained {
 
 	Texture2DPtr ResourceManager::getTexture(const std::string& name) {
 		if (m_textureMap.find(name) == m_textureMap.end()) {
-			return std::shared_ptr<Texture2D>(nullptr);
-		return m_textureMap[name];
+			return nullptr;
 		}
+		return m_textureMap[name];
 	}
+
+
 
 	void ResourceManager::clear()
 	{
@@ -67,7 +70,6 @@ namespace Chained {
 
 			std::ifstream fragmentShaderFile(fShaderFilePath);
 
-			std::ifstream fragmentShaderFile(fShaderFilePath);
 			if (!fragmentShaderFile.is_open()) {
 				std::cerr << "ERROR::SHADER: Failed to open fragment shader file: " << fShaderFilePath << std::endl;
 				return nullptr;
@@ -131,24 +133,65 @@ namespace Chained {
 		return shader;
 	}
 
-	Texture2D* ResourceManager::loadTextureFromFile(const GLchar* file, GLboolean alpha)
-	{
-		Texture2D* texture = new Texture2D();
-		if (alpha) {
-			texture->m_GpuTextureFormat = GL_RGBA;
-			texture->m_textureRenderFormat = GL_RGBA;
-		}
+	Texture2D* ResourceManager::loadTextureFromFile(const GLchar* file, GLboolean alpha) {
+		std::cout << "[DEBUG] [loadTextureFromFile] Begin" << std::endl;
 
-		int width, height, nrChannels;
+		Texture2D* texture = new Texture2D();
+
+		int width = 0, height = 0, nrChannels = 0;
 
 		std::string filePath = solveResourcePath(file);
-		unsigned char* image = stbi_load(filePath.c_str(), &width, &height, &nrChannels, 0);
-		//generate texture
+		std::cout << "[DEBUG] Resolved texture path: " << filePath << std::endl;
+
+		unsigned char* image = stbi_load(filePath.c_str(), &width, &height, &nrChannels, 4);
+		std::cout << "[DEBUG] Loaded image: " << width << "x" << height << " channels: " << nrChannels << std::endl;
+		if (!image) {
+			std::cerr << "[ERROR] Failed to load texture from file: " << file << std::endl;
+			delete texture;
+			return nullptr;
+		}
+
+		std::cout << "[DEBUG] Loaded image: " << width << "x" << height << " channels: " << nrChannels << std::endl;
+
+		// Set the correct format based on the number of channels
+// Warn if user asked for alpha but image doesn't have 4 channels
+		if (alpha && nrChannels < 4) {
+			std::cerr << "⚠️ Alpha requested but image only has " << nrChannels << " channels. Falling back to RGB.\n";
+			alpha = false;
+		}
+
+		// Set formats based on actual data
+		if (alpha && nrChannels == 4) {
+			texture->m_GpuTextureFormat = GL_RGBA;
+			texture->m_textureRenderFormat = GL_RGBA;
+			std::cout << "[DEBUG] Using RGBA format: GPU=" << GL_RGBA << ", Render=" << GL_RGBA << "\n";
+		}
+		else if (nrChannels == 3) {
+			texture->m_GpuTextureFormat = GL_RGB;
+			texture->m_textureRenderFormat = GL_RGB;
+			std::cout << "[DEBUG] Using RGB format: GPU=" << GL_RGB << ", Render=" << GL_RGB << "\n";
+		}
+		else if (nrChannels == 1) {
+			texture->m_GpuTextureFormat = GL_RED;
+			texture->m_textureRenderFormat = GL_RED;
+			std::cout << "[DEBUG] Using RED format: GPU=" << GL_RED << ", Render=" << GL_RED << "\n";
+		}
+		else {
+			std::cerr << "[ERROR] Unsupported channel count: " << nrChannels << "\n";
+			delete texture;
+			stbi_image_free(image);
+			return nullptr;
+		}
+
+
 		texture->generate(width, height, image);
-		//free image data
+		std::cout << "[DEBUG] Finished texture->generate()" << std::endl;
+		std::cout << "[DEBUG] Freeing image at pointer: " << static_cast<void*>(image) << std::endl;
 		stbi_image_free(image);
+
 		return texture;
 	}
+
 
 	void ResourceManager::setSearchPath(const std::vector<std::string>& paths)
 	{
