@@ -14,6 +14,8 @@ namespace Chained {
 	using RoomPtr = std::shared_ptr<class Room>;
 	using DungeonPtr = std::shared_ptr<class Dungeon>;
 
+	using Texture2DPtr = std::shared_ptr<Texture2D>;
+
 	using InputManagerPtr = std::shared_ptr<class InputManager>;
 	using AudioManagerPtr = std::shared_ptr<class AudioManager>;
 

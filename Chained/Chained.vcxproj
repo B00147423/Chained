@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\headers\Shader.h" />
+    <ClInclude Include="src\headers\SpriteAtlas.h" />
     <ClInclude Include="src\headers\spriteRenderer.h" />
     <ClInclude Include="src\headers\stb_image.h" />
     <ClInclude Include="src\headers\Texture2D.h" />
@@ -27,6 +28,8 @@
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\textures\orc_sword.json" />
+    <None Include="assets\textures\sprites.json" />
     <None Include="resource\shaders\sprite.frag" />
     <None Include="resource\shaders\sprite.vert" />
     <None Include="assets\shaders\sprite.frag" />
@@ -39,6 +42,7 @@
   <ItemGroup>
     <Image Include="..\..\Downloads\HEART.png" />
     <Image Include="assets\textures\awesomeface.png" />
+    <Image Include="assets\textures\sprites.png" />
     <Image Include="assets\textures\test.png" />
     <Image Include="resource\textures\awesomeface.png" />
     <Image Include="resource\textures\background.jpg" />
@@ -47,11 +51,15 @@
     <Image Include="resource\textures\paddle.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\GameState.cpp" />
     <ClCompile Include="src\core\resourceManager.cpp" />
     <ClCompile Include="src\core\shader.cpp" />
     <ClCompile Include="src\chained.cpp" />
+    <ClCompile Include="src\core\SpriteAtlas.cpp" />
     <ClCompile Include="src\core\spriteRenderer.cpp" />
     <ClCompile Include="src\core\Texture2D.cpp" />
+    <ClCompile Include="src\editor\editor.cpp" />
+    <ClCompile Include="src\headers\GameState.h" />
     <ClCompile Include="src\headers\resourceManager.h" />
     <ClCompile Include="src\headers\types.h" />
     <ClCompile Include="vendor\ImGuizmo\ImGuizmo.cpp" />
@@ -143,13 +151,12 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\beka\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\ImGuizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\beka\vcpkg\installed\x64-windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>imgui.lib;imguizmo.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -161,15 +168,14 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\beka\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\ImGuizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\beka\vcpkg\installed\x64-windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>imgui.lib;imguizmo.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

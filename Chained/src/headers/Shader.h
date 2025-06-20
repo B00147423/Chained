@@ -34,7 +34,7 @@ namespace Chained{
 		bool setUniform(const std::string& name, glm::vec3 vec, bool bUseShader = false);
 		bool setUniform(const std::string& name, glm::vec4 vec, bool bUseShader = false);
 		bool setUniform(const std::string& name, glm::mat4 mat4, bool bUseShader = false);
-	private:
+	
 		void clearShaders();
 
 	private:

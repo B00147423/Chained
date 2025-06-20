@@ -406,3 +406,6 @@ FodyWeavers.xsd
 *.sln.iml
 
 Breakout/
+
+# ImGui configuration file (auto-generated)
+imgui.ini

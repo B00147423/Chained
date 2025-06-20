@@ -1,0 +1,26 @@
+{ "frames": {
+   "SPRITE.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 1000, "h": 1051 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1000, "h": 1051 },
+    "sourceSize": { "w": 1000, "h": 1051 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.14.2-x64",
+  "image": "orc_sword.png",
+  "format": "RGBA8888",
+  "size": { "w": 1000, "h": 1051 },
+  "scale": "1",
+  "slices": [
+   { "name": "orc_sword", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 788, "y": 2, "w": 104, "h": 88 } }] },
+   { "name": "Slice 1", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 672, "y": 6, "w": 113, "h": 83 } }] },
+   { "name": "Slice 2", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 577, "y": 16, "w": 92, "h": 82 } }] },
+   { "name": "Slice 3", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 448, "y": 16, "w": 127, "h": 89 } }] },
+   { "name": "Slice 4", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 894, "y": 6, "w": 99, "h": 87 } }] }
+  ]
+ }
+}

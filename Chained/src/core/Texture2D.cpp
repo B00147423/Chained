@@ -18,16 +18,7 @@ namespace Chained {
         m_width = width;
         m_height = height;
 
-        std::cout << "[DEBUG] generate() called\n";
-        std::cout << "[DEBUG] Texture ID: " << m_id << "\n";
-        std::cout << "[DEBUG] Width: " << width << ", Height: " << height << "\n";
-        std::cout << "[DEBUG] GPU Format: " << m_GpuTextureFormat << ", Render Format: " << m_textureRenderFormat << "\n";
-        std::cout << "[DEBUG] Data pointer: " << static_cast<void*>(data) << "\n";
 
-        if (!data) {
-            std::cerr << "[ERROR] Data pointer is null!\n";
-            return;
-        }
 
         glBindTexture(GL_TEXTURE_2D, m_id);
         std::cout << "[DEBUG] glBindTexture done\n";

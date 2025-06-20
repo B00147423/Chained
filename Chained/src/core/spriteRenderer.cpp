@@ -22,10 +22,11 @@ namespace Chained {
 	{
 		glDeleteVertexArrays(1, &m_quadVAO);
 	}
-    void SpriteRenderer::DrawSprite(Texture2DPtr texture, glm::vec2 position, glm::vec2 size, GLfloat rotate, glm::vec3 color)
+    void SpriteRenderer::DrawSprite(Texture2DPtr texture, glm::vec2 position, glm::vec2 size, GLfloat rotate,glm::vec3 color, glm::vec4 uvRect)
     {
         // Prepare transformations
         m_shader->use();
+        m_shader->setUniform("uvRect", uvRect);
         glm::mat4 model(1.0f);
         // First translate (transformations are: scale happens first, then rotation and then finall translation happens; reversed order)
         model = glm::translate(model, glm::vec3(position, 0.0f));
@@ -51,15 +52,16 @@ namespace Chained {
     void SpriteRenderer::initRenderData()
     {
         GLuint VBO;
+        // Correct quad vertices
         GLfloat vertices[] = {
-            // pos      // tex
-            0.0f, 1.0f, 0.0f, 1.0f,
-            1.0f, 0.0f, 1.0f, 0.0f,
-            0.0f, 0.0f, 0.0f, 0.0f,
-
+            // Pos      // Tex
             0.0f, 1.0f, 0.0f, 1.0f,
             1.0f, 1.0f, 1.0f, 1.0f,
-            1.0f, 0.0f, 1.0f, 0.0f
+            0.0f, 0.0f, 0.0f, 0.0f,
+
+            1.0f, 1.0f, 1.0f, 1.0f,
+            1.0f, 0.0f, 1.0f, 0.0f,
+            0.0f, 0.0f, 0.0f, 0.0f
         };
 
         glGenVertexArrays(1, &m_quadVAO);

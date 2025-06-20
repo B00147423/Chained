@@ -161,17 +161,6 @@ namespace Chained {
         return true;
     }
 
-    bool Shader::setUniform(const std::string& name, glm::vec4 vec, bool bUseShader)
-    {
-        if (bUseShader)
-            use();
-        auto location = glGetUniformLocation(m_program, name.c_str());
-        if (-1 == location) {
-            return false;
-        }
-        glUniform4f(location, vec.x, vec.y, vec.z, vec.w);
-        return true;
-    }
 
     bool Shader::setUniform(const std::string& name, glm::vec2 vec, bool bUseShader)
     {
@@ -194,6 +183,18 @@ namespace Chained {
             return false;
         }
         glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(mat4));
+        return true;
+    }
+
+    bool Shader::setUniform(const std::string& name, glm::vec4 vec, bool bUseShader) {
+        if (bUseShader)
+            use();
+
+        GLint loc = glGetUniformLocation(m_program, name.c_str());
+        if (loc == -1)
+            return false;
+
+        glUniform4f(loc, vec.x, vec.y, vec.z, vec.w);
         return true;
     }
 
