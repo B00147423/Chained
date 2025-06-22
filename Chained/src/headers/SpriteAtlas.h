@@ -7,22 +7,26 @@
 #include <nlohmann/json.hpp>
 #include "../headers/types.h"
 
-struct AtlasFrame {
-    glm::vec4 uvRect; // x, y, w, h in UV space
-    int duration;
-};
+namespace Chained {
 
-class SpriteAtlas {
-public:
-    SpriteAtlas(const std::string& jsonFile);
+    struct AtlasFrame {
+        glm::vec4 uvRect; // x, y, w, h in UV space
+        int duration;
+    };
 
-    Chained::Texture2DPtr getTexture() const;
-    const AtlasFrame& getFrame(const std::string& name) const;
-    const AtlasFrame& getSlice(const std::string& name) const;
-    const std::unordered_map<std::string, AtlasFrame>& getAllFrames() const;
+    class SpriteAtlas {
+    public:
+        SpriteAtlas(const std::string& jsonFile);
 
-private:
-    Chained::Texture2DPtr m_texture;
-    std::unordered_map<std::string, AtlasFrame> m_frames;
-    std::unordered_map<std::string, AtlasFrame> m_slices; // added
-};
+        Chained::Texture2DPtr getTexture() const;
+        const AtlasFrame& getFrame(const std::string& name) const;
+        const AtlasFrame& getSlice(const std::string& name) const;
+        const std::unordered_map<std::string, AtlasFrame>& getAllFrames() const;
+
+    private:
+        Chained::Texture2DPtr m_texture;
+        std::unordered_map<std::string, AtlasFrame> m_frames;
+        std::unordered_map<std::string, AtlasFrame> m_slices; // added
+    };
+
+} // namespace Chained

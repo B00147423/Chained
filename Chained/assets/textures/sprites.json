@@ -21,7 +21,8 @@
    { "name": "heart", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 577, "y": 16, "w": 92, "h": 82 } }] },
    { "name": "sword", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 447, "y": 17, "w": 127, "h": 89 } }] },
    { "name": "orc_mallet", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 894, "y": 6, "w": 99, "h": 87 } }] },
-   { "name": "", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 577, "y": 142, "w": 7, "h": 8 } }] }
+   { "name": "", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 577, "y": 142, "w": 7, "h": 8 } }] },
+   { "name": "play_button", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 309, "y": 141, "w": 187, "h": 101 } }] }
   ]
  }
 }

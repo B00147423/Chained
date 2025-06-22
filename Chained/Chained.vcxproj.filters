@@ -33,13 +33,19 @@
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\headers\AssetPanel.h">
+    <ClInclude Include="src\headers\SpriteAtlas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\headers\Editor.h">
+    <ClInclude Include="src\headers\Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\headers\SceneView.h">
+    <ClInclude Include="src\headers\GameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\TestState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\MainMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -54,6 +60,8 @@
     </None>
     <None Include="setup.sh" />
     <None Include="vendor\vcpkg-ports\portfile.cmake" />
+    <None Include="assets\textures\orc_sword.json" />
+    <None Include="assets\textures\sprites.json" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\textures\awesomeface.png">
@@ -78,6 +86,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\textures\awesomeface.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\sprites.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -106,13 +117,19 @@
     <ClCompile Include="vendor\ImGuizmo\ImGuizmo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\editor\AssetPanel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\editor\Editor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\editor\SceneView.cpp">
+    <ClCompile Include="src\core\SpriteAtlas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\TestState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\MainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

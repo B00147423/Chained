@@ -3,6 +3,7 @@
 #include "../headers/types.h"
 #include <fstream>
 #include <iostream>
+using namespace Chained;
 
 SpriteAtlas::SpriteAtlas(const std::string& jsonFile) {
     std::ifstream file(jsonFile);

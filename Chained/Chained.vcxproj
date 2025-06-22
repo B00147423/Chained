@@ -19,10 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\headers\Engine.h" />
+    <ClInclude Include="src\headers\GameState.h" />
+    <ClInclude Include="src\headers\MainMenu.h" />
     <ClInclude Include="src\headers\Shader.h" />
     <ClInclude Include="src\headers\SpriteAtlas.h" />
     <ClInclude Include="src\headers\spriteRenderer.h" />
     <ClInclude Include="src\headers\stb_image.h" />
+    <ClInclude Include="src\headers\TestState.h" />
     <ClInclude Include="src\headers\Texture2D.h" />
     <ClInclude Include="src\types.h" />
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h" />
@@ -51,15 +55,16 @@
     <Image Include="resource\textures\paddle.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\core\GameState.cpp" />
+    <ClCompile Include="src\core\Engine.cpp" />
+    <ClCompile Include="src\core\MainMenu.cpp" />
     <ClCompile Include="src\core\resourceManager.cpp" />
     <ClCompile Include="src\core\shader.cpp" />
     <ClCompile Include="src\chained.cpp" />
     <ClCompile Include="src\core\SpriteAtlas.cpp" />
     <ClCompile Include="src\core\spriteRenderer.cpp" />
+    <ClCompile Include="src\core\TestState.cpp" />
     <ClCompile Include="src\core\Texture2D.cpp" />
     <ClCompile Include="src\editor\editor.cpp" />
-    <ClCompile Include="src\headers\GameState.h" />
     <ClCompile Include="src\headers\resourceManager.h" />
     <ClCompile Include="src\headers\types.h" />
     <ClCompile Include="vendor\ImGuizmo\ImGuizmo.cpp" />
