@@ -6,8 +6,6 @@
 #include <sstream>
 #include <algorithm>
 
-
-
 namespace Chained {
 
 	ResourceManager* ResourceManager::m_instance = nullptr;

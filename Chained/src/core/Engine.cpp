@@ -4,6 +4,9 @@
 #include <cassert>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <windows.h>
+#include "../headers/GameState.h"
+#include "../headers/RenderService.h"
 
 namespace Chained {
     Engine::Engine() {}
@@ -13,10 +16,15 @@ namespace Chained {
     }
 
     bool Engine::init() {
-        return initGLFW() && initOpenGL();
+        bool success = initGLFW() && initOpenGL();
+        if (success) {
+            RenderService::init(SCREEN_WIDTH, SCREEN_HEIGHT);  // Add this line
+        }
+        return success;
     }
 
     bool Engine::initGLFW() {
+
         if (!glfwInit()) return false;
 
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -56,18 +64,23 @@ namespace Chained {
     }
 
     void Engine::run(std::unique_ptr<GameState> initialState) {
-        using namespace Chained;
-
         currentState = std::move(initialState);
         currentState->onEnter();
 
+        double lastTime = glfwGetTime();
+
         while (!glfwWindowShouldClose(window)) {
+            double now = glfwGetTime();
+            float deltaTime = static_cast<float>(now - lastTime);
+            lastTime = now;
+
             glfwPollEvents();
+
 
             glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
-            currentState->update(0);
+            currentState->update(deltaTime);
             currentState->render();
 
             glfwSwapBuffers(window);

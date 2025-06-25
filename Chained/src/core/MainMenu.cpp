@@ -1,14 +1,18 @@
-#include "../headers/MainMenu.h"
+﻿#include "../headers/MainMenu.h"
 #include "../headers/resourceManager.h"
 #include "../headers/TestState.h"
 #include "../headers/Engine.h"
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
+
 namespace Chained {
 
+    // ───────────────────────────────────────────────
     MainMenu::MainMenu(Engine* eng) : engine(eng) {}
 
-    void MainMenu::onEnter() {
+    // ───────────────────────────────────────────────
+    void MainMenu::onEnter()
+    {
         auto& rm = *ResourceManager::get();
         rm.addSearchPath("assets/shaders");
         rm.addSearchPath("assets/textures");
@@ -26,31 +30,96 @@ namespace Chained {
 
     void MainMenu::onExit() {}
 
-    void MainMenu::update(float dt) {
-        if (glfwGetMouseButton(engine->getWindow(), GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
-            double x, y;
-            glfwGetCursorPos(engine->getWindow(), &x, &y);
+    // ───────────────────────────────────────────────
+    void MainMenu::update(float dt)
+    {
+        int winW, winH;
+        glfwGetWindowSize(engine->getWindow(), &winW, &winH);
 
-            if (x >= playButtonPos.x && x <= playButtonPos.x + playButtonSize.x &&
-                y >= playButtonPos.y && y <= playButtonPos.y + playButtonSize.y) {
-                engine->run(std::make_unique<TestState>());  // Switch to test state
+        double mx, my;
+        glfwGetCursorPos(engine->getWindow(), &mx, &my);
+
+        // convert to 800×600 virtual space
+        float px = static_cast<float>(mx) * (800.f / winW);
+        float py = static_cast<float>(my) * (600.f / winH);
+
+        int mouse = glfwGetMouseButton(engine->getWindow(), GLFW_MOUSE_BUTTON_LEFT);
+
+        // handle each button
+        handleInput(playBtn, px, py, mouse);
+        handleInput(settingsBtn, px, py, mouse);
+        handleInput(exitBtn, px, py, mouse);
+
+        // if exit clicked → close window
+        if (exitBtn.pressed && mouse == GLFW_RELEASE && exitBtn.hovered)
+        {
+            exitBtn.pressed = false;
+            glfwSetWindowShouldClose(engine->getWindow(), GLFW_TRUE);
+        }
+        // basic scale pulse on *any* press
+        clickScale += ((mouse == GLFW_PRESS ? 0.95f : 1.0f) - clickScale) * 10.f * dt;
+    }
+
+    // ───────────────────────────────────────────────
+    void MainMenu::handleInput(MenuButton& btn,
+        float px, float py,
+        int mouseState)
+    {
+        // hover test
+        btn.hovered =
+            px >= btn.pos.x && px <= btn.pos.x + btn.size.x &&
+            py >= btn.pos.y && py <= btn.pos.y + btn.size.y;
+
+        // press logic
+        if (btn.hovered && mouseState == GLFW_PRESS && !btn.pressed)
+            btn.pressed = true;
+
+        if (mouseState == GLFW_RELEASE && btn.pressed)
+        {
+            btn.pressed = false;
+            if (btn.hovered)
+            {
+                if (btn.sliceName == std::string("play_btn"))
+                    engine->run(std::make_unique<TestState>());
+                // TODO: open settings menu when you have it
             }
         }
     }
 
-    void MainMenu::render() {
-        auto& playBtn = atlas->getSlice("play_button");
-        auto uv = playBtn.uvRect;
-        uv.y = 1.0f - uv.y - uv.w;
+    // ───────────────────────────────────────────────
+    void MainMenu::drawButton(const MenuButton& btn)
+    {
+        auto& slice = atlas->getSlice(btn.sliceName);
+        glm::vec4 uv = slice.uvRect;
+        uv.y = 1.f - uv.y - uv.w;               // flip Y
 
-        renderer->DrawSprite(
-            atlas->getTexture(),
-            playButtonPos,
-            playButtonSize,
-            0.0f,
-            glm::vec3(1.0f),
-            uv
-        );
+        glm::vec3 tint = idleCol;
+        if (btn.pressed)       tint = pressedCol;
+        else if (btn.hovered)  tint = hoverCol;
+
+        // outline
+        if (btn.hovered && !btn.pressed)
+        {
+            glm::vec2 outSize = btn.size + glm::vec2(outlinePx * 2.f);
+            glm::vec2 outPos = btn.pos - glm::vec2(outlinePx);
+            renderer->DrawSprite(atlas->getTexture(), outPos, outSize,
+                0.f, glm::vec3(0.f), uv);
+        }
+
+        renderer->DrawSprite(atlas->getTexture(),
+            btn.pos,
+            btn.size,
+            0.f,
+            tint,
+            uv);
     }
 
-}
+    // ───────────────────────────────────────────────
+    void MainMenu::render()
+    {
+        drawButton(playBtn);
+        drawButton(settingsBtn);
+        drawButton(exitBtn);
+    }
+
+} // namespace Chained

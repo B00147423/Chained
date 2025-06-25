@@ -48,6 +48,9 @@
     <ClInclude Include="src\headers\MainMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\headers\RenderService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resource\shaders\sprite.frag" />
@@ -60,8 +63,10 @@
     </None>
     <None Include="setup.sh" />
     <None Include="vendor\vcpkg-ports\portfile.cmake" />
-    <None Include="assets\textures\orc_sword.json" />
     <None Include="assets\textures\sprites.json" />
+    <None Include="assets\textures\fire asset.json" />
+    <None Include="assets\textures\SPRITE.aseprite" />
+    <None Include="assets\textures\spritesUI.json" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\textures\awesomeface.png">
@@ -79,9 +84,6 @@
     <Image Include="resource\textures\paddle.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\textures\test.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="..\..\Downloads\HEART.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -91,11 +93,14 @@
     <Image Include="assets\textures\sprites.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\textures\fire asset.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\spritesUI.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\chained.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\core\shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -117,9 +122,6 @@
     <ClCompile Include="vendor\ImGuizmo\ImGuizmo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\editor\Editor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\core\SpriteAtlas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -130,6 +132,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\core\MainMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\chained.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\RenderService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

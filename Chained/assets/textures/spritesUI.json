@@ -1,0 +1,26 @@
+{ "frames": {
+   "FreeHorrorUi.png": {
+    "frame": { "x": 0, "y": 0, "w": 256, "h": 256 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 256, "h": 256 },
+    "sourceSize": { "w": 256, "h": 256 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.14.2-x64",
+  "image": "spritesUI.png",
+  "format": "RGBA8888",
+  "size": { "w": 256, "h": 256 },
+  "scale": "1",
+  "slices": [
+   { "name": "frame_for_btns", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 126, "y": 129, "w": 69, "h": 80 } }] },
+   { "name": "play_btn", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 3, "y": 132, "w": 58, "h": 24 } }] },
+   { "name": "settings_btn", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 3, "y": 165, "w": 60, "h": 23 } }] },
+   { "name": "exit_btn", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 4, "y": 199, "w": 57, "h": 21 } }] },
+   { "name": "heart", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 131, "y": 102, "w": 25, "h": 20 } }] }
+  ]
+ }
+}

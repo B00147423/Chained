@@ -1,5 +1,5 @@
 ﻿#include "./headers/Engine.h"
-#include "./headers/MainMenu.h"  // ✅ include MainMenu instead
+#include "./headers/MainMenu.h"
 using namespace Chained;
 
 int main() {
@@ -8,6 +8,6 @@ int main() {
         return -1;
     }
 
-    engine.run(std::make_unique<MainMenu>(&engine));  // ✅ Start with MainMenu
+    engine.run(std::make_unique<MainMenu>(&engine));
     return 0;
 }

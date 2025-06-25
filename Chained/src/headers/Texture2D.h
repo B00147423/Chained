@@ -14,8 +14,8 @@ public:
 
     GLuint m_wrapS = GL_REPEAT;
     GLuint m_wrapT = GL_REPEAT;
-    GLuint m_filterMin = GL_LINEAR;
-    GLuint m_filterMax = GL_LINEAR;
+    GLuint m_filterMin = GL_NEAREST;
+    GLuint m_filterMax = GL_NEAREST;
 
 public:
     Texture2D();
