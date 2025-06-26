@@ -18,13 +18,12 @@ namespace Chained {
     bool Engine::init() {
         bool success = initGLFW() && initOpenGL();
         if (success) {
-            RenderService::init(SCREEN_WIDTH, SCREEN_HEIGHT);  // Add this line
+            RenderService::init(SCREEN_WIDTH, SCREEN_HEIGHT);
         }
         return success;
     }
 
     bool Engine::initGLFW() {
-
         if (!glfwInit()) return false;
 
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -63,6 +62,7 @@ namespace Chained {
         return true;
     }
 
+
     void Engine::run(std::unique_ptr<GameState> initialState) {
         currentState = std::move(initialState);
         currentState->onEnter();
@@ -75,7 +75,6 @@ namespace Chained {
             lastTime = now;
 
             glfwPollEvents();
-
 
             glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);

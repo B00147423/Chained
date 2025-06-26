@@ -10,7 +10,7 @@
  },
  "meta": {
   "app": "https://www.aseprite.org/",
-  "version": "1.3.14.2-x64",
+  "version": "1.3.14.3-x64",
   "image": "sprites.png",
   "format": "RGBA8888",
   "size": { "w": 1000, "h": 1051 },

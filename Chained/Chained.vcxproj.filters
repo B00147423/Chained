@@ -42,10 +42,10 @@
     <ClInclude Include="src\headers\GameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\headers\TestState.h">
+    <ClInclude Include="src\Game\uiStates\TestState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\headers\MainMenu.h">
+    <ClInclude Include="src\Game\uiStates\MainMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\headers\RenderService.h">
@@ -67,6 +67,7 @@
     <None Include="assets\textures\fire asset.json" />
     <None Include="assets\textures\SPRITE.aseprite" />
     <None Include="assets\textures\spritesUI.json" />
+    <None Include="assets\textures\Sprite-0001.json" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\textures\awesomeface.png">
@@ -99,6 +100,9 @@
     <Image Include="assets\textures\spritesUI.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\textures\Sprite-0001.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\shader.cpp">
@@ -128,10 +132,10 @@
     <ClCompile Include="src\core\Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\TestState.cpp">
+    <ClCompile Include="src\Game\uiStates\TestState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\MainMenu.cpp">
+    <ClCompile Include="src\Game\uiStates\MainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\chained.cpp">

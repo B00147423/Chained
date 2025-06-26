@@ -31,19 +31,20 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DLL|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="src\headers\GameState.h" />
-    <ClInclude Include="src\headers\MainMenu.h" />
+    <ClInclude Include="src\Game\uiStates\MainMenu.h" />
     <ClInclude Include="src\headers\RenderService.h" />
     <ClInclude Include="src\headers\Shader.h" />
     <ClInclude Include="src\headers\SpriteAtlas.h" />
     <ClInclude Include="src\headers\spriteRenderer.h" />
     <ClInclude Include="src\headers\stb_image.h" />
-    <ClInclude Include="src\headers\TestState.h" />
+    <ClInclude Include="src\Game\uiStates\TestState.h" />
     <ClInclude Include="src\headers\Texture2D.h" />
     <ClInclude Include="src\types.h" />
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\textures\fire asset.json" />
+    <None Include="assets\textures\Sprite-0001.json" />
     <None Include="assets\textures\SPRITE.aseprite" />
     <None Include="assets\textures\sprites.json" />
     <None Include="assets\textures\spritesUI.json" />
@@ -60,6 +61,7 @@
     <Image Include="..\..\Downloads\HEART.png" />
     <Image Include="assets\textures\awesomeface.png" />
     <Image Include="assets\textures\fire asset.png" />
+    <Image Include="assets\textures\Sprite-0001.png" />
     <Image Include="assets\textures\sprites.png" />
     <Image Include="assets\textures\spritesUI.png" />
     <Image Include="resource\textures\awesomeface.png" />
@@ -71,13 +73,13 @@
   <ItemGroup>
     <ClCompile Include="src\chained.cpp" />
     <ClCompile Include="src\core\Engine.cpp" />
-    <ClCompile Include="src\core\MainMenu.cpp" />
+    <ClCompile Include="src\Game\uiStates\MainMenu.cpp" />
     <ClCompile Include="src\core\RenderService.cpp" />
     <ClCompile Include="src\core\resourceManager.cpp" />
     <ClCompile Include="src\core\shader.cpp" />
     <ClCompile Include="src\core\SpriteAtlas.cpp" />
     <ClCompile Include="src\core\spriteRenderer.cpp" />
-    <ClCompile Include="src\core\TestState.cpp" />
+    <ClCompile Include="src\Game\uiStates\TestState.cpp" />
     <ClCompile Include="src\core\Texture2D.cpp" />
     <ClCompile Include="src\headers\resourceManager.h" />
     <ClCompile Include="src\headers\types.h" />

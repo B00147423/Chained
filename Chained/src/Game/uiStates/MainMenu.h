@@ -1,7 +1,7 @@
 #pragma once
-#include "GameState.h"
-#include "spriteRenderer.h"
-#include "SpriteAtlas.h"
+#include "../../headers/GameState.h"
+#include "../../headers/spriteRenderer.h"
+#include "../../headers/SpriteAtlas.h"
 
 namespace Chained {
 
@@ -33,9 +33,13 @@ namespace Chained {
         std::unique_ptr<SpriteAtlas>    atlas;
 
         // three buttons
-        MenuButton playBtn{ "play_btn",     {300, 200}, {187,  93} };
-        MenuButton settingsBtn{ "settings_btn", {300, 310}, {179,  87} };
-        MenuButton exitBtn{ "exit_btn",     {300, 410}, {175,  81} };
+        static constexpr glm::vec2 PlayBtnSize{ 183,  93 };
+        static constexpr glm::vec2 SettingsBtnSize{ 179,  87 };
+        static constexpr glm::vec2 ExitBtnSize{ 175,  81 };
+
+        MenuButton playBtn{ "play_btn",     {300, 200}, PlayBtnSize };
+        MenuButton settingsBtn{ "settings_btn", {300, 310}, SettingsBtnSize };
+        MenuButton exitBtn{ "exit_btn",     {300, 410}, ExitBtnSize };
 
         // shared animation values
         float clickScale = 1.0f;

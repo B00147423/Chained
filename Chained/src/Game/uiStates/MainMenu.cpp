@@ -1,7 +1,7 @@
-﻿#include "../headers/MainMenu.h"
-#include "../headers/resourceManager.h"
-#include "../headers/TestState.h"
-#include "../headers/Engine.h"
+﻿#include "MainMenu.h"
+#include "TestState.h"
+#include "../../headers/resourceManager.h"
+#include "../../headers/Engine.h"
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
 

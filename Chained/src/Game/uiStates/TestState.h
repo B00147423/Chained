@@ -1,9 +1,9 @@
 // TestState.h
 #pragma once
-#include "GameState.h"
-#include "SpriteAtlas.h"
-#include "spriteRenderer.h"
-#include "resourceManager.h"
+#include "../../headers/GameState.h"
+#include "../../headers/SpriteAtlas.h"
+#include "../../headers/spriteRenderer.h"
+#include "../../headers/resourceManager.h"
 
 namespace Chained {
 

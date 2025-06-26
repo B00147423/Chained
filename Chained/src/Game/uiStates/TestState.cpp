@@ -1,8 +1,8 @@
 // TestState.cpp
-#include "../headers/TestState.h"
+#include "TestState.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include "../headers/RenderService.h"
+#include "../../headers/RenderService.h"
 
 using namespace Chained;
 void TestState::onEnter() {
