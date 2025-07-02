@@ -1,5 +1,5 @@
 ﻿#define STB_IMAGE_IMPLEMENTATION
-#include "../headers/stb_image.h"
+#include "../../vendor/stb_image.h"
 #include "../headers/resourceManager.h"
 #include <iostream>
 #include <fstream>
@@ -12,7 +12,7 @@ namespace Chained {
 
 	ResourceManager::ResourceManager()
 	{
-		//stbi_set_flip_vertically_on_load(true);
+		stbi_set_flip_vertically_on_load(true);
 	}
 
 	std::shared_ptr<Shader> ResourceManager::loadShader(const GLchar* vShaderFile, const GLchar* fShaderFile, const GLchar* pShaderFile, const std::string& name)

@@ -7,11 +7,21 @@
 #include <windows.h>
 #include "../headers/GameState.h"
 #include "../headers/RenderService.h"
+#include "imgui.h"
+#include "backends/imgui_impl_glfw.h"
+#include "backends/imgui_impl_opengl3.h"
+#include <vector>
+#include <string>
 
-namespace Chained {
+namespace Chained { 
     Engine::Engine() {}
 
     Engine::~Engine() {
+        // Cleanup ImGui
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui_ImplGlfw_Shutdown();
+        ImGui::DestroyContext();
+        
         glfwTerminate();
     }
 
@@ -19,6 +29,22 @@ namespace Chained {
         bool success = initGLFW() && initOpenGL();
         if (success) {
             RenderService::init(SCREEN_WIDTH, SCREEN_HEIGHT);
+            
+            // Setup ImGui
+            IMGUI_CHECKVERSION();
+            ImGui::CreateContext();
+            ImGuiIO& io = ImGui::GetIO(); (void)io;
+            io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+            io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+            io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable Docking
+
+            // Setup Dear ImGui style
+            ImGui::StyleColorsDark();
+            //ImGui::StyleColorsLight();
+
+            // Setup Platform/Renderer backends
+            ImGui_ImplGlfw_InitForOpenGL(window, true);
+            ImGui_ImplOpenGL3_Init("#version 330");
         }
         return success;
     }
@@ -49,7 +75,6 @@ namespace Chained {
     #ifdef _DEBUG
         glEnable(GL_DEBUG_OUTPUT);
         glDebugMessageCallback([](GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar* message, const void*) {
-            std::cerr << "[GL DEBUG] " << message << "\n";
             }, nullptr);
     #endif
 
@@ -69,6 +94,57 @@ namespace Chained {
 
         double lastTime = glfwGetTime();
 
+        // --- NEW: Window size selection ---
+        bool windowSizeSelected = false;
+        int selectedWidth = SCREEN_WIDTH;
+        int selectedHeight = SCREEN_HEIGHT;
+        bool fullscreen = false;
+        std::vector<std::pair<std::string, std::pair<int, int>>> resolutions = {
+            {"1280x720", {1280, 720}},
+            {"1600x900", {1600, 900}},
+            {"1920x1080", {1920, 1080}},
+            {"2560x1440", {2560, 1440}},
+        };
+
+        while (!windowSizeSelected) {
+            glfwPollEvents();
+            ImGui_ImplOpenGL3_NewFrame();
+            ImGui_ImplGlfw_NewFrame();
+            ImGui::NewFrame();
+            ImGui::Begin("Select Window Size", nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoCollapse);
+            ImGui::Text("Choose a resolution:");
+            for (auto& res : resolutions) {
+                if (ImGui::Button(res.first.c_str())) {
+                    selectedWidth = res.second.first;
+                    selectedHeight = res.second.second;
+                    windowSizeSelected = true;
+                    fullscreen = false;
+                }
+            }
+            if (ImGui::Button("Fullscreen")) {
+                windowSizeSelected = true;
+                fullscreen = true;
+            }
+            ImGui::End();
+            ImGui::Render();
+            int display_w, display_h;
+            glfwGetFramebufferSize(window, &display_w, &display_h);
+            glViewport(0, 0, display_w, display_h);
+            glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+            glClear(GL_COLOR_BUFFER_BIT);
+            ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+            glfwSwapBuffers(window);
+        }
+
+        // --- NEW: Recreate window with selected size ---
+        if (fullscreen) {
+            const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+            glfwSetWindowMonitor(window, glfwGetPrimaryMonitor(), 0, 0, mode->width, mode->height, mode->refreshRate);
+        } else {
+            glfwSetWindowMonitor(window, nullptr, 100, 100, selectedWidth, selectedHeight, 0);
+        }
+
+        // --- Main loop ---
         while (!glfwWindowShouldClose(window)) {
             double now = glfwGetTime();
             float deltaTime = static_cast<float>(now - lastTime);
@@ -76,11 +152,20 @@ namespace Chained {
 
             glfwPollEvents();
 
+            // Start the ImGui frame
+            ImGui_ImplOpenGL3_NewFrame();
+            ImGui_ImplGlfw_NewFrame();
+            ImGui::NewFrame();
+
             glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
             currentState->update(deltaTime);
             currentState->render();
+
+            // Render ImGui
+            ImGui::Render();
+            ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
             glfwSwapBuffers(window);
         }
@@ -88,3 +173,4 @@ namespace Chained {
         currentState->onExit();
     }
 }
+

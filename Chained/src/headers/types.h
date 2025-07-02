@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
-
+#include <string>
+#include <glm/glm.hpp>
 namespace Chained {
 
 	using Texture2DPtr = std::shared_ptr<class Texture2D>;
@@ -18,5 +19,14 @@ namespace Chained {
 
 	using InputManagerPtr = std::shared_ptr<class InputManager>;
 	using AudioManagerPtr = std::shared_ptr<class AudioManager>;
+
+	struct SceneObject {
+		std::string name;
+		glm::vec2 position{};
+		float rotation = 0;
+		glm::vec2 scale{ 1, 1 };
+		int assetId = 0;
+	};
+	
 
 } // namespace Chained

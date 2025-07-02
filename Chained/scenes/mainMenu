@@ -1,0 +1,89 @@
+{
+    "camera": {
+        "pos": [
+            61.510623931884766,
+            -77.61629486083984
+        ],
+        "zoom": 0.9896672964096069
+    },
+    "objects": [
+        {
+            "assetId": 7,
+            "name": "settings_btn",
+            "position": [
+                461.0,
+                133.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 2,
+            "name": "exit_btn",
+            "position": [
+                1085.0,
+                1085.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                2.0999999046325684,
+                1.0
+            ]
+        },
+        {
+            "assetId": 2,
+            "name": "exit_btn",
+            "position": [
+                1085.0,
+                469.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 2,
+            "name": "exit_btn",
+            "position": [
+                1069.0,
+                469.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 2,
+            "name": "exit_btn",
+            "position": [
+                461.0,
+                30.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 6,
+            "name": "play_btn",
+            "position": [
+                461.0,
+                236.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        }
+    ]
+}

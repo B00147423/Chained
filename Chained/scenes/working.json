@@ -1,0 +1,89 @@
+{
+    "camera": {
+        "pos": [
+            0.0,
+            0.0
+        ],
+        "zoom": 1.0
+    },
+    "objects": [
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                508.0,
+                358.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                377.0,
+                248.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                466.0,
+                73.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                422.0,
+                539.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                334.0,
+                344.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                910.0,
+                586.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        }
+    ]
+}

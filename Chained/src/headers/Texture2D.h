@@ -22,6 +22,9 @@ public:
     ~Texture2D();
     void generate(GLuint width, GLuint height, unsigned char* data);
     void bind() const;
+
+public:
+    // Static helper for 1x1 color texture
 };
 
 } // namespace Chained

@@ -27,9 +27,6 @@
     <ClInclude Include="src\headers\spriteRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\headers\stb_image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -51,6 +48,27 @@
     <ClInclude Include="src\headers\RenderService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="vendor\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\EditorState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\imgui\imgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\imgui\backends\imgui_impl_glfw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\imgui\backends\imgui_impl_opengl3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\uiStates\PlayState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resource\shaders\sprite.frag" />
@@ -62,7 +80,6 @@
       <Filter>Source Files</Filter>
     </None>
     <None Include="setup.sh" />
-    <None Include="vendor\vcpkg-ports\portfile.cmake" />
     <None Include="assets\textures\sprites.json" />
     <None Include="assets\textures\fire asset.json" />
     <None Include="assets\textures\SPRITE.aseprite" />
@@ -142,6 +159,33 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\core\RenderService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\EditorState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\imgui\backends\imgui_impl_opengl3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\imgui\backends\imgui_impl_glfw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\imgui\imgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\imgui\imgui_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\imgui\imgui_tables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\imgui\imgui_widgets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\uiStates\PlayState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

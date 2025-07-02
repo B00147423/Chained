@@ -32,7 +32,7 @@ SpriteAtlas::SpriteAtlas(const std::string& jsonFile) {
 
         glm::vec4 uv = glm::vec4(
             x / float(atlasW),
-            1.0f - (y + h) / float(atlasH),  // Flip Y!
+            y / float(atlasH),
             w / float(atlasW),
             h / float(atlasH)
         );
@@ -40,7 +40,7 @@ SpriteAtlas::SpriteAtlas(const std::string& jsonFile) {
         m_frames[frameName] = { uv, frameData["duration"] };
     }
 
-    // ✅ Load slices
+    // Load slices
     for (auto& slice : j["meta"]["slices"]) {
         std::string name = slice["name"];
         if (name.empty()) continue; // Skip unnamed slices
@@ -53,11 +53,14 @@ SpriteAtlas::SpriteAtlas(const std::string& jsonFile) {
 
         glm::vec4 uv = glm::vec4(
             x / float(atlasW),
-            (atlasH - y - h) / float(atlasH), // Invert Y coordinate
+            y / float(atlasH),
             w / float(atlasW),
             h / float(atlasH)
         );
     
+        std::cout << "[DEBUG] Slice '" << name << "' bounds: (" << x << ", " << y << ", " << w << ", " << h 
+                  << ") UV: (" << uv.x << ", " << uv.y << ", " << uv.z << ", " << uv.w << ")\n";
+        
         m_slices[name] = { uv, 0 };
     }
 }
@@ -65,7 +68,9 @@ SpriteAtlas::SpriteAtlas(const std::string& jsonFile) {
 Chained::Texture2DPtr SpriteAtlas::getTexture() const {
     return m_texture;
 }
-
+const std::unordered_map<std::string, AtlasFrame>& SpriteAtlas::getAllSlices() const {
+    return m_slices;
+}
 const AtlasFrame& SpriteAtlas::getFrame(const std::string& name) const {
     return m_frames.at(name);
 }

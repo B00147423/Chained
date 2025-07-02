@@ -23,6 +23,8 @@ namespace Chained {
         const AtlasFrame& getSlice(const std::string& name) const;
         const std::unordered_map<std::string, AtlasFrame>& getAllFrames() const;
 
+        const std::unordered_map<std::string, AtlasFrame>& getAllSlices() const;
+
     private:
         Chained::Texture2DPtr m_texture;
         std::unordered_map<std::string, AtlasFrame> m_frames;

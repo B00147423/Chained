@@ -27,6 +27,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Game\uiStates\PlayState.h" />
+    <ClInclude Include="src\headers\Camera.h" />
+    <ClInclude Include="src\headers\EditorState.h" />
     <ClInclude Include="src\headers\Engine.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DLL|x64'">false</ExcludedFromBuild>
     </ClInclude>
@@ -36,11 +39,14 @@
     <ClInclude Include="src\headers\Shader.h" />
     <ClInclude Include="src\headers\SpriteAtlas.h" />
     <ClInclude Include="src\headers\spriteRenderer.h" />
-    <ClInclude Include="src\headers\stb_image.h" />
     <ClInclude Include="src\Game\uiStates\TestState.h" />
     <ClInclude Include="src\headers\Texture2D.h" />
     <ClInclude Include="src\types.h" />
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h" />
+    <ClInclude Include="vendor\imgui\imgui.h" />
+    <ClInclude Include="vendor\imgui\backends\imgui_impl_glfw.h" />
+    <ClInclude Include="vendor\imgui\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="vendor\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\textures\fire asset.json" />
@@ -55,7 +61,6 @@
     <None Include="setup.bat" />
     <None Include="setup.sh" />
     <None Include="src\vcpkg.json" />
-    <None Include="vendor\vcpkg-ports\portfile.cmake" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\Downloads\HEART.png" />
@@ -72,6 +77,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\chained.cpp" />
+    <ClCompile Include="src\core\Camera.cpp" />
+    <ClCompile Include="src\core\EditorState.cpp" />
     <ClCompile Include="src\core\Engine.cpp" />
     <ClCompile Include="src\Game\uiStates\MainMenu.cpp" />
     <ClCompile Include="src\core\RenderService.cpp" />
@@ -79,11 +86,18 @@
     <ClCompile Include="src\core\shader.cpp" />
     <ClCompile Include="src\core\SpriteAtlas.cpp" />
     <ClCompile Include="src\core\spriteRenderer.cpp" />
+    <ClCompile Include="src\Game\uiStates\PlayState.cpp" />
     <ClCompile Include="src\Game\uiStates\TestState.cpp" />
     <ClCompile Include="src\core\Texture2D.cpp" />
     <ClCompile Include="src\headers\resourceManager.h" />
     <ClCompile Include="src\headers\types.h" />
     <ClCompile Include="vendor\ImGuizmo\ImGuizmo.cpp" />
+    <ClCompile Include="vendor\imgui\imgui.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_draw.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_tables.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="vendor\imgui\backends\imgui_impl_glfw.cpp" />
+    <ClCompile Include="vendor\imgui\backends\imgui_impl_opengl3.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -164,6 +178,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>vendor\ImGuizmo;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -176,6 +192,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>vendor\ImGuizmo;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -190,6 +208,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>vendor\ImGuizmo;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -202,10 +222,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>.DEBUG;CONSOLE;CH_EDITOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>vendor\ImGuizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\ImGuizmo;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -220,7 +240,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>vendor\ImGuizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\ImGuizmo;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -237,7 +257,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>vendor\ImGuizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\ImGuizmo;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
