@@ -409,3 +409,5 @@ Breakout/
 
 # ImGui configuration file (auto-generated)
 imgui.ini
+
+physics_editor_examples/
