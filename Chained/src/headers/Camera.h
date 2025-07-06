@@ -25,7 +25,7 @@ namespace Chained {
     private:
         glm::vec2 m_position = { 0.f, 0.f }; // Top-left of camera in world space
         float m_zoom = 1.0f;
-        float m_viewportWidth = 800.f;
-        float m_viewportHeight = 600.f;
+        float m_viewportWidth;
+        float m_viewportHeight;
     };
 }
