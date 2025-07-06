@@ -94,7 +94,8 @@ namespace Chained {
 
         double lastTime = glfwGetTime();
 
-        // --- NEW: Window size selection ---
+        // --- OPTIONAL: Window size selection (only in editor mode) ---
+#ifdef CH_EDITOR
         bool windowSizeSelected = false;
         int selectedWidth = SCREEN_WIDTH;
         int selectedHeight = SCREEN_HEIGHT;
@@ -136,13 +137,14 @@ namespace Chained {
             glfwSwapBuffers(window);
         }
 
-        // --- NEW: Recreate window with selected size ---
+        // --- Recreate window with selected size ---
         if (fullscreen) {
             const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
             glfwSetWindowMonitor(window, glfwGetPrimaryMonitor(), 0, 0, mode->width, mode->height, mode->refreshRate);
         } else {
             glfwSetWindowMonitor(window, nullptr, 100, 100, selectedWidth, selectedHeight, 0);
         }
+#endif
 
         // --- Main loop ---
         while (!glfwWindowShouldClose(window)) {

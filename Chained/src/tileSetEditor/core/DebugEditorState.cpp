@@ -1,4 +1,5 @@
 ﻿#include "../Game/uiStates/DebugEditorState.h"
+#include <memory>
 #include <nlohmann/json.hpp>
 // #include <imgui.h>  // TEMPORARILY DISABLED until ImGui is properly initialized
 #include <fstream> // Add this include to resolve the incomplete type error for std::ofstream

@@ -1,0 +1,297 @@
+{
+    "camera": {
+        "pos": [
+            -770.6470947265625,
+            -202.4164276123047
+        ],
+        "zoom": 0.5843884944915771
+    },
+    "objects": [
+        {
+            "assetId": 0,
+            "name": "heart",
+            "position": [
+                243.0,
+                368.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 0,
+            "name": "heart",
+            "position": [
+                484.0,
+                329.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 0,
+            "name": "heart",
+            "position": [
+                429.0,
+                452.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 0,
+            "name": "heart",
+            "position": [
+                600.0,
+                279.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                410.3765869140625,
+                477.64849853515625
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                254.59353637695313,
+                468.20709228515625
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                254.59353637695313,
+                468.20709228515625
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                254.59353637695313,
+                468.20709228515625
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                251.05300903320313,
+                469.38726806640625
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                251.05300903320313,
+                469.38726806640625
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                239.25125122070313,
+                472.92779541015625
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                239.25125122070313,
+                467.02691650390625
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                74.02676391601563,
+                458.7657470703125
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                -38.08984375,
+                154.28060913085938
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                -75.85543823242188,
+                173.16339111328125
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                -72.31491088867188,
+                169.62286376953125
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                153.66024780273438,
+                251.29580688476563
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                331.2968444824219,
+                112.02871704101563
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "position": [
+                460.6162109375,
+                433.1956481933594
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 2,
+            "name": "exit_btn",
+            "position": [
+                -379.22222900390625,
+                570.2784423828125
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 2,
+            "name": "exit_btn",
+            "position": [
+                37.157958984375,
+                632.8065185546875
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 2,
+            "name": "exit_btn",
+            "position": [
+                422.2740783691406,
+                398.3262023925781
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        }
+    ]
+}

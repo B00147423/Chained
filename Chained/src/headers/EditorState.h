@@ -10,6 +10,8 @@
 #include "SpriteAtlas.h"
 #include "../headers/Camera.h"
 #include "../headers/types.h"
+
+
 namespace Chained {
     class SpriteRenderer;
 
@@ -32,15 +34,18 @@ namespace Chained {
             AtlasFrame frame;
         };
         void drawCameraBounds();
+        bool isObjectUnderMouse(const SceneObject& obj, const glm::vec2& mouseWorldPos) const;
         Engine* engine = nullptr;
         std::vector<SceneObject> objects;
         int selectedAsset = 0;
         int selectedObjectIndex = -1;
+        bool placementMode = false;
         std::unique_ptr<SpriteRenderer> renderer;
         std::vector<AssetEntry> assetPalette;
         std::shared_ptr<SpriteAtlas> spriteAtlas;
         void saveSceneToJson(const std::string& filename);
         void loadSceneFromJson(const std::string& filename);
+
         std::unique_ptr<Chained::Camera> camera;
         std::string currentSceneName;
         ShaderPtr m_shader;
