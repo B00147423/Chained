@@ -1,0 +1,73 @@
+{
+    "camera": {
+        "pos": [
+            -100.49484252929688,
+            273.7350769042969
+        ],
+        "zoom": 1.676010251045227
+    },
+    "objects": [
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": true,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    100.0,
+                    78.0
+                ]
+            },
+            "position": [
+                223.0,
+                415.0
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 5,
+            "name": "orc_mallet",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": true,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    90.0,
+                    75.0
+                ]
+            },
+            "position": [
+                112.0199966430664,
+                416.5780029296875
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        }
+    ]
+}

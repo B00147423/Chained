@@ -1,0 +1,46 @@
+{
+    "camera": {
+        "pos": [
+            0.0,
+            0.0
+        ],
+        "zoom": 1.0
+    },
+    "objects": [
+        {
+            "assetId": 1,
+            "name": "orc_sword",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "enabled": true,
+                "fixedRotation": false,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "mass": 1.0,
+                "material": {
+                    "bounciness": 0.0,
+                    "density": 1.0,
+                    "friction": 0.5,
+                    "name": "Default"
+                },
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    1.0,
+                    1.0
+                ]
+            },
+            "position": [
+                309.0,
+                349.0
+            ],
+            "rotation": -26.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        }
+    ]
+}
