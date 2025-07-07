@@ -137,6 +137,32 @@ void EditorState::update(float /*dt*/) {
                 if (ImGui::DragFloat2("Scale", scale, 0.1f)) {
                     obj.scale = { scale[0], scale[1] };
                 }
+                
+                // --- PHYSICS CONTROLS ---
+                ImGui::Separator();
+                ImGui::Text("Physics");
+                ImGui::Checkbox("Physics Enabled", &obj.physics.enabled);
+                if (obj.physics.enabled) {
+                    int type = (int)obj.physics.bodyType;
+                    if (ImGui::Combo("Body Type", &type, "Static\0Dynamic\0Kinematic\0")) {
+                        obj.physics.bodyType = (Chained::BodyType)type;
+                    }
+                    int shape = (int)obj.physics.shapeType;
+                    if (ImGui::Combo("Shape Type", &shape, "Box\0Circle\0")) {
+                        obj.physics.shapeType = (Chained::ShapeType)shape;
+                    }
+                    ImGui::InputFloat2("Physics Size", glm::value_ptr(obj.physics.size));
+                    ImGui::InputFloat("Radius", &obj.physics.radius);
+                    ImGui::InputFloat("Density", &obj.physics.material.density);
+                    ImGui::InputFloat("Friction", &obj.physics.material.friction);
+                    ImGui::InputFloat("Bounciness", &obj.physics.material.bounciness);
+                    ImGui::InputFloat("Gravity Scale", &obj.physics.gravityScale);
+                    ImGui::InputFloat("Linear Damping", &obj.physics.linearDamping);
+                    ImGui::InputFloat("Angular Damping", &obj.physics.angularDamping);
+                    ImGui::Checkbox("Fixed Rotation", &obj.physics.fixedRotation);
+                    ImGui::Checkbox("Is Sensor", &obj.physics.isSensor);
+                }
+                
                 if (ImGui::Button("Delete Object")) {
                     objects.erase(objects.begin() + selectedObjectIndex);
                     selectedObjectIndex = -1;
@@ -281,10 +307,11 @@ void EditorState::update(float /*dt*/) {
                     asset.frame.uvRect.z * texW,
                     asset.frame.uvRect.w * texH
                 };
-                obj.position = world - 0.5f * size;
-            }
-            else {
+                obj.position = world - 0.5f * size; // Centered under mouse
+                obj.physics.size = size;            // Collider matches sprite
+            } else {
                 obj.position = world;
+                obj.physics.size = glm::vec2(1, 1); // Fallback
             }
             obj.rotation = 0.0f;
             obj.scale = { 1, 1 };
@@ -319,7 +346,22 @@ void Chained::EditorState::saveSceneToJson(const std::string& filename) {
             {"position", {obj.position.x, obj.position.y}},
             {"rotation", obj.rotation},
             {"scale", {obj.scale.x, obj.scale.y}},
-            {"assetId", obj.assetId}
+            {"assetId", obj.assetId},
+            {"physics", {
+                {"enabled", obj.physics.enabled},
+                {"bodyType", (int)obj.physics.bodyType},
+                {"shapeType", (int)obj.physics.shapeType},
+                {"size", {obj.physics.size.x, obj.physics.size.y}},
+                {"radius", obj.physics.radius},
+                {"density", obj.physics.material.density},
+                {"friction", obj.physics.material.friction},
+                {"bounciness", obj.physics.material.bounciness},
+                {"gravityScale", obj.physics.gravityScale},
+                {"linearDamping", obj.physics.linearDamping},
+                {"angularDamping", obj.physics.angularDamping},
+                {"fixedRotation", obj.physics.fixedRotation},
+                {"isSensor", obj.physics.isSensor}
+            }}
             });
     }
     if (camera) {
@@ -344,6 +386,7 @@ void Chained::EditorState::saveSceneToJson(const std::string& filename) {
     }
     std::cout << "[INFO] Scene saved to " << path << "\n";
 }
+
 
 void Chained::EditorState::loadSceneFromJson(const std::string& filename) {
     std::ifstream file(filename);
@@ -378,6 +421,31 @@ void Chained::EditorState::loadSceneFromJson(const std::string& filename) {
         obj.rotation = objJson["rotation"].get<float>();
         obj.scale = { objJson["scale"][0].get<float>(), objJson["scale"][1].get<float>() };
         obj.assetId = objJson["assetId"].get<int>();
+
+        // ---- Load PHYSICS! ----
+        if (objJson.contains("physics")) {
+            const auto& phy = objJson["physics"];
+            obj.physics.enabled = phy.value("enabled", false);
+            obj.physics.bodyType = (BodyType)phy.value("bodyType", 0);
+            obj.physics.shapeType = (ShapeType)phy.value("shapeType", 0);
+
+            if (phy.contains("size")) {
+                obj.physics.size = {
+                    phy["size"][0].get<float>(),
+                    phy["size"][1].get<float>()
+                };
+            }
+            obj.physics.radius = phy.value("radius", 0.5f);
+            obj.physics.material.density = phy.value("density", 1.0f);
+            obj.physics.material.friction = phy.value("friction", 0.5f);
+            obj.physics.material.bounciness = phy.value("bounciness", 0.0f);
+            obj.physics.gravityScale = phy.value("gravityScale", 1.0f);
+            obj.physics.linearDamping = phy.value("linearDamping", 0.0f);
+            obj.physics.angularDamping = phy.value("angularDamping", 0.0f);
+            obj.physics.fixedRotation = phy.value("fixedRotation", false);
+            obj.physics.isSensor = phy.value("isSensor", false);
+        }
+
         objects.push_back(obj);
     }
 
@@ -391,6 +459,7 @@ void Chained::EditorState::loadSceneFromJson(const std::string& filename) {
 
     std::cout << "[INFO] Loaded scene from: " << filename << " with " << objects.size() << " objects" << std::endl;
 }
+
 
 bool EditorState::isObjectUnderMouse(const SceneObject& obj, const glm::vec2& mouseWorldPos) const {
     if (obj.assetId < 0 || obj.assetId >= static_cast<int>(assetPalette.size())) {
@@ -424,7 +493,22 @@ bool EditorState::isObjectUnderMouse(const SceneObject& obj, const glm::vec2& mo
     return (mouseScreenPos.x >= objScreenPos.x - halfSize.x && mouseScreenPos.x <= objScreenPos.x + halfSize.x &&
             mouseScreenPos.y >= objScreenPos.y - halfSize.y && mouseScreenPos.y <= objScreenPos.y + halfSize.y);
 }
+void EditorState::DrawDebugLine(glm::vec2 a, glm::vec2 b, glm::vec3 color) {
+    int winWidth, winHeight;
+    glfwGetWindowSize(engine->getWindow(), &winWidth, &winHeight);
 
+    glm::vec2 screenA = camera->worldToScreen(a);
+    glm::vec2 screenB = camera->worldToScreen(b);
+    // Offset for left panel
+    screenA.x += kLeftPanelWidth;
+    screenB.x += kLeftPanelWidth;
+    // Flip Y for ImGui (top-left origin)
+    screenA.y = winHeight - screenA.y;
+    screenB.y = winHeight - screenB.y;
+
+    ImU32 col = IM_COL32(color.r * 255, color.g * 255, color.b * 255, 255);
+    ImGui::GetBackgroundDrawList()->AddLine(ImVec2(screenA.x, screenA.y), ImVec2(screenB.x, screenB.y), col, 2.0f);
+}
 void EditorState::render() {
     int winWidth, winHeight;
     glfwGetWindowSize(engine->getWindow(), &winWidth, &winHeight);
@@ -444,6 +528,7 @@ void EditorState::render() {
     int texW = tex->m_width;
     int texH = tex->m_height;
 
+    // --- Draw Sprites ---
     for (int i = 0; i < objects.size(); ++i) {
         const auto& obj = objects[i];
         if (obj.assetId < 0 || obj.assetId >= static_cast<int>(assetPalette.size())) continue;
@@ -465,10 +550,55 @@ void EditorState::render() {
             uv
         );
     }
+
+    // --- Draw Physics Collider Outlines (Box shape only) ---
+    for (int i = 0; i < objects.size(); ++i) {
+        const auto& obj = objects[i];
+        if (!obj.physics.enabled) continue;
+        if (obj.physics.shapeType != Chained::ShapeType::Box) continue;
+
+        // Calculate the center of the sprite (regardless of collider size)
+        glm::vec2 spriteSize = {
+            assetPalette[obj.assetId].frame.uvRect.z * texW,
+            assetPalette[obj.assetId].frame.uvRect.w * texH
+        };
+        glm::vec2 spriteCenter = obj.position + 0.5f * spriteSize;
+
+        // Use spriteCenter as the center for the collider
+        glm::vec2 center = spriteCenter;
+        glm::vec2 size = obj.physics.size * obj.scale;
+
+        // Box corners before rotation (local space)
+        glm::vec2 local[4] = {
+            {-0.5f * size.x, -0.5f * size.y},
+            {+0.5f * size.x, -0.5f * size.y},
+            {+0.5f * size.x, +0.5f * size.y},
+            {-0.5f * size.x, +0.5f * size.y}
+        };
+
+        // Rotate and translate corners to world space
+        glm::vec2 world[4];
+        float c = cos(obj.rotation), s = sin(obj.rotation);
+        for (int j = 0; j < 4; ++j) {
+            world[j].x = center.x + (local[j].x * c - local[j].y * s);
+            world[j].y = center.y + (local[j].x * s + local[j].y * c);
+        }
+
+        // Draw 4 lines
+        for (int j = 0; j < 4; ++j) {
+            DrawDebugLine(world[j], world[(j + 1) % 4], glm::vec3(1, 0, 0));
+        }
+    }
+
+    // --- Draw Circles (if needed) ---
+    // Add this if you have circles, otherwise ignore:
+    // for (int i = 0; i < objects.size(); ++i) { ... if (obj.physics.shapeType == Chained::ShapeType::Circle) ... }
+
     drawCameraBounds();
 
     glDisable(GL_SCISSOR_TEST);
     glViewport(0, 0, winWidth, winHeight);
 }
+
 
 #endif
