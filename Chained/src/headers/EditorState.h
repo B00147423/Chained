@@ -45,7 +45,7 @@ namespace Chained {
         std::shared_ptr<SpriteAtlas> spriteAtlas;
         void saveSceneToJson(const std::string& filename);
         void loadSceneFromJson(const std::string& filename);
-
+        void DrawDebugLine(glm::vec2 a, glm::vec2 b, glm::vec3 color);
         std::unique_ptr<Chained::Camera> camera;
         std::string currentSceneName;
         ShaderPtr m_shader;
