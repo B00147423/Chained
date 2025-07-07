@@ -6,6 +6,15 @@
 
 using json = nlohmann::json;
 
+bool aabbOverlap(const Chained::SceneObject& a, const Chained::SceneObject& b) {
+    glm::vec2 aMin = a.position;
+    glm::vec2 aMax = a.position + a.physics.size * a.scale;
+    glm::vec2 bMin = b.position;
+    glm::vec2 bMax = b.position + b.physics.size * b.scale;
+    return (aMin.x < bMax.x && aMax.x > bMin.x &&
+            aMin.y < bMax.y && aMax.y > bMin.y);
+}
+
 namespace Chained {
 
     TestState::TestState(const std::string& sceneFile) {
@@ -30,6 +39,25 @@ namespace Chained {
             obj.rotation = objJson["rotation"].get<float>();
             obj.scale = { objJson["scale"][0].get<float>(), objJson["scale"][1].get<float>() };
             obj.assetId = objJson["assetId"].get<int>();
+            if (objJson.contains("physics")) {
+                const auto& phys = objJson["physics"];
+                obj.physics.enabled = phys.value("enabled", false);
+                obj.physics.bodyType = (Chained::BodyType)phys.value("bodyType", 0);
+                obj.physics.shapeType = (Chained::ShapeType)phys.value("shapeType", 0);
+                obj.physics.gravityScale = phys.value("gravityScale", 1.0f);
+                obj.physics.linearDamping = phys.value("linearDamping", 0.0f);
+                obj.physics.angularDamping = phys.value("angularDamping", 0.0f);
+                obj.physics.fixedRotation = phys.value("fixedRotation", false);
+                obj.physics.isSensor = phys.value("isSensor", false);
+                obj.physics.material.friction = phys.value("friction", 0.5f);
+                obj.physics.material.bounciness = phys.value("bounciness", 0.0f);
+                obj.physics.material.density = phys.value("density", 1.0f);
+                if (phys.contains("size")) {
+                    obj.physics.size = { phys["size"][0].get<float>(), phys["size"][1].get<float>() };
+                }
+                obj.physics.radius = phys.value("radius", 0.5f);
+            }
+
             objects.push_back(obj);
         }
 
@@ -65,14 +93,13 @@ namespace Chained {
     }
 
     void TestState::update(float dt) {
-        // Basic WASD movement for a specific player asset
         float moveSpeed = 200.0f; // pixels per second
-        
-        // Find the player object by name (you can change "player" to whatever you want)
-        for (auto& obj : objects) {
-            if (obj.name == "mallet" || obj.name == "mallet") {
+        for (size_t i = 0; i < objects.size(); ++i) {
+            auto& obj = objects[i];
+            if (obj.name == "orc_sword") { // or your player name
+                glm::vec2 oldPos = obj.position;
                 if (glfwGetKey(glfwGetCurrentContext(), GLFW_KEY_W) == GLFW_PRESS) {
-                    obj.position.y += moveSpeed * dt;
+                    obj.position.y -= moveSpeed * dt;
                 }
                 if (glfwGetKey(glfwGetCurrentContext(), GLFW_KEY_S) == GLFW_PRESS) {
                     obj.position.y += moveSpeed * dt;
@@ -81,7 +108,16 @@ namespace Chained {
                     obj.position.x -= moveSpeed * dt;
                 }
                 if (glfwGetKey(glfwGetCurrentContext(), GLFW_KEY_D) == GLFW_PRESS) {
-                    obj.position.x -= moveSpeed * dt;
+                    obj.position.x += moveSpeed * dt;
+                }
+                glm::vec2 moveDelta = obj.position - oldPos;
+                // Push other objects on collision
+                for (size_t j = 0; j < objects.size(); ++j) {
+                    if (i == j) continue;
+                    auto& other = objects[j];
+                    if (aabbOverlap(obj, other)) {
+                        other.position += moveDelta;
+                    }
                 }
                 break; // Only move the first player found
             }
