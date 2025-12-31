@@ -140,7 +140,7 @@ namespace Chained {
             if (btn.hovered)
             {
                 if (btn.sliceName == std::string("play_btn"))
-                    engine->run(std::make_unique<TestState>("scenes/worldphysics.json"));
+                    engine->run(std::make_unique<TestState>("scenes/testsix.json"));
                 // TODO: open settings menu when you have it
             }
         }

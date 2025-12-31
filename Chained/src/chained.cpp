@@ -23,7 +23,7 @@ int main() {
     engine.run(std::make_unique<EditorState>(&engine));
 #else
     // In Release (no CH_EDITOR), start with the main menu!
-    engine.run(std::make_unique<MainMenu>(&engine));
+    //engine.run(std::make_unique<MainMenu>(&engine));
     //engine.run(std::make_unique<TestState>("scenes/hearts.JSON")); // Alternative: directly run TestState
 #endif
 

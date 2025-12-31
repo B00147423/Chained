@@ -90,12 +90,14 @@ void EditorState::update(float /*dt*/) {
             for (int i = 0; i < assetPalette.size(); ++i) {
                 const auto& asset = assetPalette[i];
                 ImTextureID texId = (ImTextureID)(intptr_t)spriteAtlas->getTexture()->m_id;
+              
                 glm::vec4 uv = asset.frame.uvRect;
                 uv.y = 1.f - uv.y - uv.w;
-                ImVec2 uv0(uv.x, uv.y);
-                ImVec2 uv1(uv.x + uv.z, uv.y + uv.w);
+                ImVec2 uv0(uv.x, uv.y + uv.w);
+                ImVec2 uv1(uv.x + uv.z, uv.y);
+
                 ImGui::PushID(i);
-                if (ImGui::Selectable(asset.name.c_str(), i == selectedAsset)) {
+                if (ImGui::Selectable("", i == selectedAsset)) {
                     // Enter placement mode when selecting an asset
                     if (selectedAsset == i) {
                         // If clicking the same asset, exit placement mode
@@ -217,7 +219,6 @@ void EditorState::update(float /*dt*/) {
             ImGui::Text("Placement Mode: Click in scene to place object");
             ImGui::Text("Left Click: Select object in list");
             ImGui::Text("Right Click + Drag: Pan camera");
-            ImGui::Text("Mouse Wheel: Zoom camera");
             ImGui::Text("Escape: Exit placement mode / Deselect object");
             ImGui::EndTabItem();
         }
@@ -236,15 +237,6 @@ void EditorState::update(float /*dt*/) {
         camera->pan(glm::vec2(-delta.x, delta.y));
     }
     
-    // Zoom with scroll wheel
-    if (!io.WantCaptureMouse && io.MouseWheel != 0.0f) {
-        double mx, my;
-        glfwGetCursorPos(engine->getWindow(), &mx, &my);
-        float zoomFactor = (io.MouseWheel > 0) ? 1.1f : 0.9f;
-        glm::vec2 screenPoint = { float(mx), float(winHeight - my) };
-        camera->zoomAtScreen(zoomFactor, screenPoint);
-    }
-
     // --- KEYBOARD INPUT ---
     if (glfwGetKey(engine->getWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS) {
         if (placementMode) {
@@ -366,8 +358,7 @@ void Chained::EditorState::saveSceneToJson(const std::string& filename) {
     }
     if (camera) {
         j["camera"] = {
-            {"pos", {camera->getPosition().x, camera->getPosition().y}},
-            {"zoom", camera->getZoom()}
+            {"pos", {camera->getPosition().x, camera->getPosition().y}}
         };
     }
     fs::path tmpPath = path;
@@ -386,7 +377,6 @@ void Chained::EditorState::saveSceneToJson(const std::string& filename) {
     }
     std::cout << "[INFO] Scene saved to " << path << "\n";
 }
-
 
 void Chained::EditorState::loadSceneFromJson(const std::string& filename) {
     std::ifstream file(filename);
@@ -452,14 +442,11 @@ void Chained::EditorState::loadSceneFromJson(const std::string& filename) {
     if (j.contains("camera")) {
         auto camJson = j["camera"];
         glm::vec2 camPos = { camJson["pos"][0].get<float>(), camJson["pos"][1].get<float>() };
-        float camZoom = camJson["zoom"].get<float>();
         camera->setPostion(camPos);
-        camera->setZoom(camZoom);
     }
 
     std::cout << "[INFO] Loaded scene from: " << filename << " with " << objects.size() << " objects" << std::endl;
 }
-
 
 bool EditorState::isObjectUnderMouse(const SceneObject& obj, const glm::vec2& mouseWorldPos) const {
     if (obj.assetId < 0 || obj.assetId >= static_cast<int>(assetPalette.size())) {
@@ -493,6 +480,7 @@ bool EditorState::isObjectUnderMouse(const SceneObject& obj, const glm::vec2& mo
     return (mouseScreenPos.x >= objScreenPos.x - halfSize.x && mouseScreenPos.x <= objScreenPos.x + halfSize.x &&
             mouseScreenPos.y >= objScreenPos.y - halfSize.y && mouseScreenPos.y <= objScreenPos.y + halfSize.y);
 }
+
 void EditorState::DrawDebugLine(glm::vec2 a, glm::vec2 b, glm::vec3 color) {
     int winWidth, winHeight;
     glfwGetWindowSize(engine->getWindow(), &winWidth, &winHeight);
@@ -509,6 +497,7 @@ void EditorState::DrawDebugLine(glm::vec2 a, glm::vec2 b, glm::vec3 color) {
     ImU32 col = IM_COL32(color.r * 255, color.g * 255, color.b * 255, 255);
     ImGui::GetBackgroundDrawList()->AddLine(ImVec2(screenA.x, screenA.y), ImVec2(screenB.x, screenB.y), col, 2.0f);
 }
+
 void EditorState::render() {
     int winWidth, winHeight;
     glfwGetWindowSize(engine->getWindow(), &winWidth, &winHeight);
@@ -537,6 +526,8 @@ void EditorState::render() {
             asset.frame.uvRect.z * texW,
             asset.frame.uvRect.w * texH
         };
+
+
         glm::vec4 uv = asset.frame.uvRect;
         uv.y = 1.f - uv.y - uv.w;
         glm::vec3 color = (i == selectedObjectIndex) ? glm::vec3(1.0f, 1.0f, 0.0f) : glm::vec3(1.0f);

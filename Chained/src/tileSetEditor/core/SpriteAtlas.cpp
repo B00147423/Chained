@@ -1,4 +1,4 @@
-﻿#include "../headers/SpriteAtlas.h"
+#include "../headers/SpriteAtlas.h"
 #include "../headers/resourceManager.h"
 #include "../headers/types.h"
 #include <fstream>

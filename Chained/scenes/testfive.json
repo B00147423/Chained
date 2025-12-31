@@ -1,0 +1,511 @@
+{
+    "camera": {
+        "pos": [
+            -92.59258270263672,
+            -279.629150390625
+        ],
+        "zoom": 1.0800000429153442
+    },
+    "objects": [
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                -109.96299743652344,
+                368.51800537109375
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                -109.96299743652344,
+                112.51799774169922
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                -109.96299743652344,
+                -143.40699768066406
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                145.6300048828125,
+                369.6300048828125
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                401.3330078125,
+                369.6300048828125
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                656.7410278320313,
+                369.6300048828125
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                912.6300048828125,
+                369.6300048828125
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                1168.6300048828125,
+                369.6300048828125
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                -109.96299743652344,
+                -399.4070129394531
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                1117.6300048828125,
+                113.59300231933594
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                1117.6300048828125,
+                -141.40699768066406
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                1168.6300048828125,
+                -398.07501220703125
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                146.3699951171875,
+                -399.4070129394531
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                402.5929870605469,
+                -399.4070129394531
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                659.2219848632813,
+                -399.4070129394531
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "assetId": 8,
+            "name": "wall",
+            "physics": {
+                "angularDamping": 0.0,
+                "bodyType": 1,
+                "bounciness": 0.0,
+                "density": 1.0,
+                "enabled": false,
+                "fixedRotation": false,
+                "friction": 0.5,
+                "gravityScale": 1.0,
+                "isSensor": false,
+                "linearDamping": 0.0,
+                "radius": 0.5,
+                "shapeType": 0,
+                "size": [
+                    316.0,
+                    316.0
+                ]
+            },
+            "position": [
+                912.1849975585938,
+                -397.4070129394531
+            ],
+            "rotation": 0.0,
+            "scale": [
+                1.0,
+                1.0
+            ]
+        }
+    ],
+    "sceneSize": [
+        800.0,
+        600.0
+    ]
+}

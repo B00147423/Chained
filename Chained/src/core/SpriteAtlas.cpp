@@ -1,8 +1,9 @@
-﻿#include "../headers/SpriteAtlas.h"
+#include "../headers/SpriteAtlas.h"
 #include "../headers/resourceManager.h"
 #include "../headers/types.h"
 #include <fstream>
 #include <iostream>
+
 using namespace Chained;
 
 SpriteAtlas::SpriteAtlas(const std::string& jsonFile) {

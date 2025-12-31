@@ -8,7 +8,7 @@
 using namespace Chained;
 void TestState::onEnter() {
     atlas = std::make_unique<SpriteAtlas>("assets/textures/sprites.json");
-    renderer = std::shared_ptr<SpriteRenderer>(RenderService::getRenderer(), [](SpriteRenderer*) {});
+    renderer = RenderService::renderer;
 }
 
 void TestState::onExit() {}
@@ -35,11 +35,4 @@ void TestState::render() {
     
 }
 
-bool aabbOverlap(const Chained::SceneObject& a, const Chained::SceneObject& b) {
-    glm::vec2 aMin = a.position;
-    glm::vec2 aMax = a.position + a.physics.size * a.scale;
-    glm::vec2 bMin = b.position;
-    glm::vec2 bMax = b.position + b.physics.size * b.scale;
-    return (aMin.x < bMax.x && aMax.x > bMin.x &&
-            aMin.y < bMax.y && aMax.y > bMin.y);
-}
+// Removed manual AABB collision detection - use Box2D physics instead!

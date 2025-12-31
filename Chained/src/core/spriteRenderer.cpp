@@ -42,7 +42,7 @@ namespace Chained {
         // Render textured quad
         m_shader->setUniform("spriteColor", color);
 
-        glActiveTexture(GL_TEXTURE0);
+       
         texture->bind();
 
         glBindVertexArray(m_quadVAO);

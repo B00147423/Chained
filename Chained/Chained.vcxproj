@@ -27,6 +27,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\headers\DebugDraw.h" />
     <ClInclude Include="src\Game\uiStates\PlayState.h" />
     <ClInclude Include="src\headers\Camera.h" />
     <ClInclude Include="src\headers\EditorState.h" />
@@ -35,6 +36,7 @@
     </ClInclude>
     <ClInclude Include="src\headers\GameState.h" />
     <ClInclude Include="src\Game\uiStates\MainMenu.h" />
+    <ClInclude Include="src\headers\physics.h" />
     <ClInclude Include="src\headers\RenderService.h" />
     <ClInclude Include="src\headers\Shader.h" />
     <ClInclude Include="src\headers\SpriteAtlas.h" />
@@ -80,6 +82,7 @@
     <ClCompile Include="src\core\Camera.cpp" />
     <ClCompile Include="src\core\EditorState.cpp" />
     <ClCompile Include="src\core\Engine.cpp" />
+    <ClCompile Include="src\core\physics.cpp" />
     <ClCompile Include="src\Game\uiStates\MainMenu.cpp" />
     <ClCompile Include="src\core\RenderService.cpp" />
     <ClCompile Include="src\core\resourceManager.cpp" />
